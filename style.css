@@ -1,0 +1,145 @@
+/* --- ROOT & GLOBAL MAINTAIN --- */
+:root { 
+    --nude: #fff0f5; 
+    --gold: #d4a5a5; 
+    --text: #5d4a4a; 
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0; background-color: #000;
+    height: 100vh; display: flex; justify-content: center; align-items: center;
+    font-family: 'Poppins', sans-serif; overflow: hidden;
+}
+.big-video-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; }
+.main-wrapper { width: 380px; max-width: 95vw; height: 660px; perspective: 2000px; }
+.scroll-stack { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; }
+
+/* --- PAGE GLOBAL --- */
+.page {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s;
+    transform-origin: left center; border-radius: 15px;
+    background-image: url('page-bg.jpg');
+    background-repeat: no-repeat; background-position: center; background-size: cover;
+    color: var(--text); display: flex; flex-direction: column;
+    justify-content: flex-start; align-items: center;
+    box-shadow: 5px 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(212, 165, 165, 0.3); z-index: 1; overflow: hidden;
+}
+.page::after { content: ""; position: absolute; inset: 0; background: rgba(255, 240, 245, 0.1); z-index: 0; }
+.content { position: relative; z-index: 1; width: 100%; height: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; padding: 15px; }
+
+/* --- PAGE STATES --- */
+.page.active { z-index: 10; opacity: 1; visibility: visible; pointer-events: auto; transform: rotateY(0deg); }
+.page.flipped { transform: rotateY(-165deg); z-index: 1; pointer-events: none; }
+.page.next-page { opacity: 0; z-index: 1; visibility: hidden; pointer-events: none; }
+
+/* --- PAGE 1: JEMPUTAN (NAIKKAN COUNTDOWN) --- */
+/* Kita kurangkan padding-bottom supaya countdown naik ke atas sikit */
+#page1 .content { justify-content: flex-end; padding-bottom: 170px; /* Asal 60px */ }
+.countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 90%; }
+.pie-item { display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; color: var(--gold); font-weight: 600; }
+.pie { width: 55px; height: 55px; border-radius: 50%; background: #eee; position: relative; display: flex; justify-content: center; align-items: center; }
+.pie::after { content: ""; position: absolute; inset: 4px; background: #fff; border-radius: 50%; z-index: 1; }
+.val { position: relative; z-index: 2; font-size: 0.9rem; font-weight: 600; color: var(--text); }
+.first-video-cover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 10; border-radius: 15px; transition: opacity 0.6s ease; }
+
+/* --- PAGE 3: ATUR CARA (NAIKKAN BUTTONS) --- */
+/* Kita kurangkan padding-bottom supaya buttons naik ke atas sikit */
+/* --- PAGE 3: ATUR CARA (NAIKKAN LAGI BUTTONS) --- */
+/* Kita tambah padding-bottom supaya buttons naik lebih tinggi */
+#page3-content { 
+    justify-content: flex-end; 
+    padding-bottom: 180px; /* Tukar dari 100px ke 140px untuk naikkan lagi */
+}
+.map-grid-boxed { display: flex; gap: 10px; width: 90%; }
+.map-box-item { 
+    flex: 1; background: #fff; border: 1px solid var(--gold); color: var(--gold); 
+    padding: 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; 
+    text-decoration: none; text-align: center; font-family: 'Poppins', sans-serif;
+}
+
+/* --- PAGE 4: RSVP (NAIKKAN FORM, STACK BUTTONS, SAMA LEBAR) --- */
+/* Kita kurangkan padding-top supaya form naik ke atas sikit */
+#page4-content { justify-content: flex-start; padding-top: 150px; /* Asal 80px */ }
+.rsvp-stacked-form { width: 100%; max-width: 270px; display: flex; flex-direction: column; gap: 10px; }
+.rsvp-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; text-align: center; font-size: 0.8rem; font-family: 'Poppins', sans-serif;}
+
+/* KEMASKINI LAYOUT RADIO BUTTONS (Atas Bawah) */
+.rsvp-options-stacked { 
+    width: 100%; 
+    display: flex; 
+    flex-direction: column; /* Stacked Atas Bawah */
+    gap: 8px; /* Jarak antara button Hadir & Tak Hadir */
+}
+
+/* SAMA LEBARKAN RADIO CARDS DENGAN INPUT BOX */
+.radio-card-stacked { 
+    width: 100%; /* Lebar Penuh */
+    border: 1px solid var(--gold); 
+    padding: 12px; /* Pad sama dengan input box */
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 0.85rem; 
+    background: #fff; 
+    text-align: center; 
+    display: block;
+    font-family: "Times New Roman", Times, serif !important; font-style: italic !important;
+}
+.radio-card-stacked:has(input:checked) { background: var(--gold); color: #fff; }
+.radio-card-stacked input { display: none; }
+
+#submitBtn { 
+    width: 100%; background: var(--gold); color: #fff; border: none; 
+    padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; 
+    font-family: "Times New Roman", Times, serif !important; font-style: italic !important; margin-top: 5px;
+}
+.doa-text-tiny { 
+    font-size: 0.75rem; 
+    font-style: italic; 
+    color: #555; 
+    line-height: 1.5; 
+    margin-top: 25px; /* Kurangkan jarak doa ke atas sikit */
+    width: 90%; 
+    font-family: "Times New Roman", Times, serif !important;
+}
+
+/* --- PAGE 5: GUESTBOOK & CLOSING (KEBAWAHKAN SEMUA) --- */
+/* Kita tambah padding-top supaya semua content turun ke bawah sikit */
+#page5-content { justify-content: flex-start; padding-top: 60px; /* Asal 15px */ gap: 15px; /* Jarak antara Guestbook & No Phone */ }
+
+.live-ucapan-box { 
+    width: 90%; border: 1px solid var(--gold); border-radius: 15px; 
+    padding: 15px; background: rgba(255, 255, 255, 0.8); height: 280px; 
+    display: flex; flex-direction: column;
+    margin-bottom: 0px; /* Buang margin-bottom lama */
+}
+.ucapan-list { flex-grow: 1; overflow-y: auto; text-align: left; font-size: 0.7rem; line-height: 1.4; padding-right: 5px; }
+.input-ucapan-row { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; width: 100%; }
+.input-ucapan-row input { width: 100%; font-size: 0.7rem; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
+.input-ucapan-row button { width: 100%; background: var(--gold); color: #fff; border: none; padding: 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+
+.contact-grid-neat { 
+    width: 90%; 
+    margin: 0px 0; /* Buang margin lama */
+    display: flex; flex-direction: column; gap: 8px;
+}
+.contact-item {
+    background: rgba(255, 255, 255, 0.6); border: 1px solid var(--gold); border-radius: 50px; 
+    padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; 
+    text-decoration: none; color: var(--text); transition: 0.3s;
+}
+.contact-item:hover { background: var(--gold); color: #fff; }
+
+.closing-section h1 { 
+    font-size: 2.2rem !important; 
+    margin: 5px 0 0 0; /* Kurangkan margin atas */
+    color: var(--gold);
+    font-family: "Times New Roman", Times, serif !important; font-style: italic !important;
+}
+
+/* --- OTHERS MAINTAIN --- */
+.nav-container { position: absolute; top: 25px; width: 85%; display: flex; z-index: 30; justify-content: space-between; }
+.btn-small-nav { border: 1px solid var(--gold); padding: 4px 10px; font-size: 0.65rem; color: var(--gold); border-radius: 4px; cursor: pointer; background: white; font-family: 'Poppins', sans-serif; }
+.music-control { position: fixed; bottom: 20px; right: 20px; background: #fff; border: 2px solid var(--gold); border-radius: 50%; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; z-index: 200; cursor: pointer; }
+.pie::after { content: ""; position: absolute; inset: 4px; background: #fff; border-radius: 50%; z-index: 1; }
