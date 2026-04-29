@@ -133,15 +133,23 @@ body {
 }
 
 /* KEMASKINI BAHAGIAN INI (Saiz, Times New Roman, Italic) */
+/* Pastikan label asal maintain (Guestbook & Hubungi) */
 .label-tiny.gold-text { 
-    font-size: 0.85rem; /* Saiz sama besar dengan black-phone */
-    color: var(--gold) !important;
-    font-family: "Times New Roman", Times, serif !important; /* Tukar Font */
-    font-style: italic !important; /* Buat Italic */
-    font-weight: 400; /* Tak payah bold sangat */
-    letter-spacing: 0px; /* Buat normal balik */
+    font-size: 0.65rem; 
+    letter-spacing: 1px; 
+    font-weight: 600; 
+    font-family: 'Poppins', sans-serif !important; 
+    font-style: normal !important;
 }
 
+/* KHAS UNTUK NAMA DALAM KURUNGAN SAHAJA */
+.contact-name-special {
+    font-size: 0.85rem !important; /* Saiz sama besar dengan nombor */
+    color: var(--gold) !important;
+    font-family: "Times New Roman", Times, serif !important;
+    font-style: italic !important;
+    font-weight: 400;
+}
 .contact-item:hover { background: var(--gold); color: #fff; }
 
 .closing-section h1 { 
