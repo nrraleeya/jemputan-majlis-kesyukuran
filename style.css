@@ -136,7 +136,7 @@ body {
     font-size: 16px !important;    /* Sama saiz dengan nombor */
     font-family: "Times New Roman", Times, serif !important;
     font-style: italic !important;
-    color: var(--gold) !important;
+    color: #555 !important;
     font-weight: 400 !important;   /* Pastikan tak bold */
     letter-spacing: 0px !important;
     line-height: normal !important;
@@ -146,12 +146,12 @@ body {
 /* Pastikan nombor telefon maintain saiz sama */
 .black-phone {
     font-size: 16px !important;
-    font-weight: 600;
-    color: #000 !important;
+    font-weight: 400;
+    color: #555 !important;
 }
 .contact-name-special {
     font-size: 16px !important; /* Kita kunci saiz yang sama tepat */
-    color: var(--gold) !important;
+    color: #555 !important;
     font-family: "Times New Roman", Times, serif !important;
     font-style: italic !important;
     font-weight: 500; /* Naikkan sikit ketebalan supaya seimbang dengan nombor */
