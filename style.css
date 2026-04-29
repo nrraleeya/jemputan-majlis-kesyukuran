@@ -119,16 +119,29 @@ body {
 .input-ucapan-row input { width: 100%; font-size: 0.7rem; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
 .input-ucapan-row button { width: 100%; background: var(--gold); color: #fff; border: none; padding: 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
 
+/* --- PAGE 5: GUESTBOOK & CLOSING --- */
+/* (Kod atas maintain) */
+
 .contact-grid-neat { 
-    width: 90%; 
-    margin: 0px 0; /* Buang margin lama */
-    display: flex; flex-direction: column; gap: 8px;
+    width: 90%; display: flex; flex-direction: column; gap: 8px;
 }
+
 .contact-item {
     background: rgba(255, 255, 255, 0.6); border: 1px solid var(--gold); border-radius: 50px; 
     padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; 
     text-decoration: none; color: var(--text); transition: 0.3s;
 }
+
+/* KEMASKINI BAHAGIAN INI (Saiz, Times New Roman, Italic) */
+.label-tiny.gold-text { 
+    font-size: 0.85rem; /* Saiz sama besar dengan black-phone */
+    color: var(--gold) !important;
+    font-family: "Times New Roman", Times, serif !important; /* Tukar Font */
+    font-style: italic !important; /* Buat Italic */
+    font-weight: 400; /* Tak payah bold sangat */
+    letter-spacing: 0px; /* Buat normal balik */
+}
+
 .contact-item:hover { background: var(--gold); color: #fff; }
 
 .closing-section h1 { 
